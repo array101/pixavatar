@@ -1,2 +1,2 @@
 # pixavatar
-generate random pixel avatar for users
+generate unique pixel avatar for users
