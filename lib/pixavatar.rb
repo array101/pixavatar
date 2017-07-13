@@ -1,5 +1,8 @@
-require 'digest/md5'
-require 'chunky_png'
+# stdlib
+require "digest/md5"
+
+# third party
+require "chunky_png"
 
 class Pixavatar
 	attr_accessor :avatar
@@ -13,8 +16,14 @@ class Pixavatar
 			}
 		@colorable_grid = colorable_grid_map
 	end
+
+	def self.draw_image(input_term)
+		pixavatar_obj = self.new(input_term)
+		pixavatar_obj.draw_and_save_image
+	end
 	
-	def draw_image
+	# draw image pattern in png file and export		
+	def draw_and_save_image
 		color = @avatar[:color]
 		png = ChunkyPNG::Image.new(250, 250, ChunkyPNG::Color::WHITE)
 		color = ChunkyPNG::Color.rgba(color[:r], color[:g], color[:b], color[:alpha])
@@ -23,8 +32,8 @@ class Pixavatar
 			p2 = points[1]
 			png.rect(p1[0], p1[1], p2[0], p2[1] , color, color)
 		end
-		png.save("../tmp/#{@term}.png", :interlace => true)
-	end	
+		png.save(File.join(Dir.pwd, "/#{@term}.png"), :interlace => true)
+	end
 
 	private 	
 
@@ -63,10 +72,10 @@ class Pixavatar
 		end
 		pixel_grid.compact
 	end
-		
+	
+	
 end
 
-tmp = Pixavatar.new('banana')
-tmp.draw_image
+Pixavatar.draw_image('sandeep')
 
 

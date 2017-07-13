@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'pixavatar'
+if ARGV[0]
+	Pixavatar.draw_image(ARGV[0])
+else
+	puts 'USE: pixavatar <string>'
+	puts 'Please pass a string to generate the image'
+end
