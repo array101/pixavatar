@@ -71,11 +71,9 @@ class Pixavatar
 			end
 		end
 		pixel_grid.compact
-	end
-	
+	end	
 	
 end
 
-Pixavatar.draw_image('sandeep')
 
 
