@@ -1,0 +1,2 @@
+require "pixavatar"
+require "pry"
